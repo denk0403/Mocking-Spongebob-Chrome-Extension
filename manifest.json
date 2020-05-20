@@ -14,6 +14,10 @@
 		"scripts": ["./src/background.js"],
 		"persistent": false
 	},
+	"options_ui": {
+		"page": "./src/options.html",
+		"open_in_tab": false
+	},
 	"icons": {
 		"144": "img/icon-144.png"
 	}
