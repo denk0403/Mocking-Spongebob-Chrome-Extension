@@ -1,0 +1,20 @@
+{
+	"manifest_version": 2,
+	"name": "Mocking Spongebob Text Selection Generator",
+	"version": "1.0",
+	"description": "Generate Mocking Spongebob memes faster by selecting any text or image from a webpage you would like to mock!",
+	"permissions": [
+		"contextMenus",
+		"tabs",
+		"activeTab",
+		"storage",
+		"https://denk0403.github.io/Mocking-Spongebob/*"
+	],
+	"background": {
+		"scripts": ["./src/background.js"],
+		"persistent": false
+	},
+	"icons": {
+		"144": "img/icon-144.png"
+	}
+}
