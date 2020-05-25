@@ -2,8 +2,10 @@ const hashify = (str) => {
 	return [...str].map((char) => char.codePointAt(0).toString(16)).join(":");
 };
 
-const generateURL = (str = "") => {
-	return `https://denk0403.github.io/Mocking-Spongebob/#${hashify(str)}`;
+const generateCaptionURL = (str = "") => {
+	return `https://denk0403.github.io/Mocking-Spongebob/#mockType:asl:${hashify(
+		str
+	)}`;
 };
 
 const loadImageScriptString = (src) => {
@@ -33,7 +35,7 @@ chrome.contextMenus.onClicked.addListener((info) => {
 			// handle mock image
 			chrome.tabs.create(
 				{
-					url: generateURL(),
+					url: `https://denk0403.github.io/Mocking-Spongebob/#image`,
 					active: true,
 				},
 				(tab) => {
