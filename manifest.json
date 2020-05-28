@@ -13,6 +13,15 @@
 		"scripts": ["./src/background.js"],
 		"persistent": false
 	},
+	"options_ui": {
+		"page": "./src/options.html",
+		"open_in_tab": false
+	},
+	"browser_action": {
+		"default_icon": "img/icon-144.png",
+		"default_popup": "./src/options.html",
+		"default_title": "Mocking SpongeBob Selection Shortcut"
+	},
 	"icons": {
 		"144": "img/icon-144.png"
 	}
