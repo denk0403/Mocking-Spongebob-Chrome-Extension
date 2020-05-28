@@ -17,7 +17,18 @@
 		});
 	});
 
-	document.getElementById("github_link").addEventListener("click", () => {
-		chrome.tabs.create({ url: "https://github.com/denk0403", active: true });
-	});
+	document
+		.getElementById("github_creator_link")
+		.addEventListener("click", () => {
+			chrome.tabs.create({ url: "https://github.com/denk0403", active: true });
+		});
+
+	document
+		.getElementById("github_project_link")
+		.addEventListener("click", () => {
+			chrome.tabs.create({
+				url: "https://github.com/denk0403/Mocking-Spongebob-Chrome-Extension",
+				active: true,
+			});
+		});
 })();
