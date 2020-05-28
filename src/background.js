@@ -2,14 +2,21 @@ const hashify = (str) => {
 	return [...str].map((char) => char.codePointAt(0).toString(16)).join(":");
 };
 
-const generateURL = (str = "") => {
-	return `https://denk0403.github.io/Mocking-Spongebob/#${hashify(str)}`;
+const generateHashURL = (str = "") => {
+	return `https://denk0403.github.io/Mocking-Spongebob/#mockType:asl:${hashify(
+		str
+	)}`;
+};
+
+const generateImageURL = () => {
+	return `https://denk0403.github.io/Mocking-Spongebob/#image`;
 };
 
 const loadImageScriptString = (src) => {
 	return `
         document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('upload').src = "${src}";
+			document.getElementById("imageinRadio").click();
+			document.getElementById('upload').src = "${src}";
         });
     `;
 };
@@ -39,14 +46,14 @@ chrome.contextMenus.onClicked.addListener((info) => {
 					if (info.selectionText) {
 						// handle mock selected text
 						chrome.tabs.create({
-							url: generateURL(info.selectionText),
+							url: generateHashURL(info.selectionText),
 							active: true,
 						});
 					} else if (info.srcUrl) {
 						// handle mock image
 						chrome.tabs.create(
 							{
-								url: generateURL(),
+								url: generateImageURL(),
 								active: true,
 							},
 							(tab) => {
@@ -62,7 +69,7 @@ chrome.contextMenus.onClicked.addListener((info) => {
 					if (info.selectionText) {
 						// handle mock selected text
 						chrome.windows.create({
-							url: generateURL(info.selectionText),
+							url: generateHashURL(info.selectionText),
 							focused: true,
 							type: "normal",
 							state: "maximized",
@@ -71,13 +78,13 @@ chrome.contextMenus.onClicked.addListener((info) => {
 						// handle mock image
 						chrome.windows.create(
 							{
-								url: generateURL(),
+								url: generateImageURL(),
 								focused: true,
 								type: "normal",
 								state: "maximized",
 							},
-							(tab) => {
-								chrome.tabs.executeScript(tab.id, {
+							() => {
+								chrome.tabs.executeScript({
 									runAt: "document_start",
 									code: loadImageScriptString(info.srcUrl),
 								});
@@ -97,7 +104,7 @@ chrome.contextMenus.onClicked.addListener((info) => {
 								if (info.selectionText) {
 									// handle mock selected text
 									chrome.tabs.update(tabs[0].id, {
-										url: generateURL(info.selectionText),
+										url: generateHashURL(info.selectionText),
 										active: true,
 									});
 								} else if (info.srcUrl) {
@@ -105,13 +112,12 @@ chrome.contextMenus.onClicked.addListener((info) => {
 									chrome.tabs.update(
 										tabs[0].id,
 										{
-											url: generateURL(),
 											active: true,
 										},
 										(tab) => {
 											chrome.tabs.executeScript(tab.id, {
 												runAt: "document_start",
-												code: loadImageScriptString(info.srcUrl),
+												code: `document.getElementById('upload').src = "${info.srcUrl}";`,
 											});
 										}
 									);
@@ -120,14 +126,14 @@ chrome.contextMenus.onClicked.addListener((info) => {
 								if (info.selectionText) {
 									// handle mock selected text
 									chrome.tabs.create({
-										url: generateURL(info.selectionText),
+										url: generateHashURL(info.selectionText),
 										active: true,
 									});
 								} else if (info.srcUrl) {
 									// handle mock image
 									chrome.tabs.create(
 										{
-											url: generateURL(),
+											url: generateImageURL(),
 											active: true,
 										},
 										(tab) => {

@@ -1,8 +1,8 @@
 {
 	"manifest_version": 2,
-	"name": "Mocking Spongebob Text Selection Generator",
-	"version": "1.0",
-	"description": "Generate Mocking Spongebob memes faster by selecting any text or image from a webpage you would like to mock!",
+	"name": "Mocking SpongeBob Selection Shortcut",
+	"version": "1.1",
+	"description": "Generate Mocking SpongeBob memes faster with a context menu shortcut!",
 	"permissions": [
 		"contextMenus",
 		"tabs",
@@ -17,6 +17,11 @@
 	"options_ui": {
 		"page": "./src/options.html",
 		"open_in_tab": false
+	},
+	"browser_action": {
+		"default_icon": "img/icon-144.png",
+		"default_popup": "./src/options.html",
+		"default_title": "Mocking SpongeBob Selection Shortcut"
 	},
 	"icons": {
 		"144": "img/icon-144.png"

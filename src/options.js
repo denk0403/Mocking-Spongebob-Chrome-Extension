@@ -16,4 +16,8 @@
 			mockSponge_openType: event.currentTarget.value,
 		});
 	});
+
+	document.getElementById("github_link").addEventListener("click", () => {
+		chrome.tabs.create({ url: "https://github.com/denk0403", active: true });
+	});
 })();
